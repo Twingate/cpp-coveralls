@@ -52,12 +52,14 @@ def parse_yaml_config(args):
     yml = yml or {}
     return yml
 
+
 def run():
     """Run cpp coverage."""
     import json
     import os
     import sys
-    from . import coverage, report
+    import report
+    import coverage
 
     args = coverage.create_args(sys.argv[1:])
 
@@ -120,3 +122,6 @@ def run():
         return report.finish_report(args)
     else:
         raise ValueError("Not supported action")
+# for debugging
+# if __name__ == "__main__":
+#     run()
