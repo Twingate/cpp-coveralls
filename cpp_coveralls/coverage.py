@@ -347,12 +347,12 @@ def combine_reports(original, new):
     report['source_digest'] = original['source_digest']
     coverage = []
     for original_num, new_num in zip(original['coverage'], new['coverage']):
-        if original_num is None and new_num is None:
-            coverage.append(None)
+        if original_num is None:
+            coverage.append(new_num)
+        elif new_num is None:
+            coverage.append(original_num)
         else:
-            total = original_num if original_num is not None else 0
-            total += new_num if new_num is not None else 0
-            coverage.append(total)
+            coverage.append(original_num + new_num)
 
     report['coverage'] = coverage
     return report
