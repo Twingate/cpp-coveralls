@@ -463,7 +463,6 @@ def collect(args):
                                 source_file_path = os.path.abspath(
                                     os.path.join(the_root, source_file_path))
                         src_path = os.path.relpath(source_file_path, abs_root)
-                        # not sure what those 2 lines are doing?
                         if src_path.startswith(os.path.pardir + os.path.sep):
                             continue
                         if is_excluded_path(args, source_file_path):
